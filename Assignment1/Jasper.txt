@@ -98,20 +98,28 @@ But over all very structured and easy readible and understandible.
 Vending Machine
 1. What building blocks do you see? What do they represent? 
 Are they conceptual or physical?
+The states, substates and superstates. They are all conceptual and model in which state the vending machine is after an event has occured.
 
 2. Same questions as 1, but now for the connectors?
+The arrows represented by the events. These are all conceptual. They model an event which would happen in real life.
 
 3. To which views (1..*) does the model belong?
 	Motivate why, and identify corresponding stakeholders and their concerns.
-	
+Process view: system integrators, testers can see how the various parts interact.
+Developers see what the machine has to do when something happens. They also see what they have to implement to see how the state changes.
+Development view: the statechart is used to create the model by developpers.
+
 4. Which of the following EFRs are addressed (Y + motivation | N)?
 	Performance/Scalability, availability/reliability, security, maintainability?
-Security: 
-Performance/Scalability: 
-Availability/Reliability: 
-Maintainability:
-Operability:
+Security: No
+Performance/Scalability: No
+Availability/Reliability: Yes, there are error methods when an error occurs.
+Maintainability: Yes, the chart is very clear and easy to maintain. It is both useful for implementation and modification.
 
 5. Is there a concept of distribution (Y + motivation | N)?
+No.
 
 6.  Comment on the clarity/semantics of the diagram
+It is a very clear diagram. In development view it is clear in which states the machine can be and how these states can be reachted. 
+It is however free for the programmer how this is implemented. It is also very cleaer wheter something is a state or an action. These are the only two possibilities in the chart.
+Furtermore are the substates very useful to see which components communicate with each other.
