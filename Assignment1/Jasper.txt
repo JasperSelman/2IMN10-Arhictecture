@@ -1,0 +1,102 @@
+Saas-mode
+1. What building blocks do you see? What do they represent? 
+Are they conceptual or physical?
+The building blocks we see are the Firewalls (conceptual). The purpose of these firewalls are obvious security reasons,
+such that the site is protected from malicious attacks. We also see load balancers and filtering. These are for work distribution and are also conceptual.
+The other componenets are all physical, namely the servers (application and database), databases and NASses. These are for storing and sharing the information on the site.
+
+2. Same questions as 1, but now for the connectors?
+You see the red lines connecting components within a site to each other. 
+This represent how components in a site are linked to each other and with which components they can communicate.
+You also see the green arrows, these connectors show how the main site communicates with the secondary site(s).
+All these connectors are conceptual.
+
+3. To which views (1..*) does the model belong?
+	Motivate why, and identify corresponding stakeholders and their concerns.
+We see a clear Design view with regards to the communication. You can clearly see which components should interact with other components.
+You can also clearly see the Deployment view. You can clearly see all the components in the view and it gives an overview of the services. 	
+
+4. Which of the following EFRs are addressed (Y + motivation | N)?
+	Performance/Scalability, availability/reliability, security, maintainability?
+Security: Yes, the use of firewalls and synchronous replications define the security.
+Performance/Scalability: Yes, the use of the filtering and clustering give notion of the performance of the model.
+Also the scalable parts are shown in groups from 1, 2 to N.
+Availability/Reliability: No
+Maintainability: No
+Operability: Flow through the network is shown. 
+
+5. Is there a concept of distribution (Y + motivation | N)?
+Yes, You can clearly see the flow throughout the system. You see load balancers, applications, 
+filters, Clustered Databases, Severs and NASses and how these are linked to each other. 
+
+6.  Comment on the clarity/semantics of the diagram
+You can clearly see how all the components in the sites and how they are connected. 
+Different components have there own coloring and smaller parts of the model, belonging to each other are structured in a group (dashed lines).
+Different ways of communication are shown with different arrows. 
+Not really clear what the model does precisely and what users/systems are using it.
+
+
+EEtimes
+1. What building blocks do you see? What do they represent? 
+Are they conceptual or physical?
+
+2. Same questions as 1, but now for the connectors?
+
+3. To which views (1..*) does the model belong?
+	Motivate why, and identify corresponding stakeholders and their concerns.
+	
+4. Which of the following EFRs are addressed (Y + motivation | N)?
+	Performance/Scalability, availability/reliability, security, maintainability?
+Security: 
+Performance/Scalability: 
+Availability/Reliability: 
+Maintainability:
+Operability:
+
+5. Is there a concept of distribution (Y + motivation | N)?
+
+6.  Comment on the clarity/semantics of the diagram
+
+
+LinkedIn
+1. What building blocks do you see? What do they represent? 
+Are they conceptual or physical?
+
+2. Same questions as 1, but now for the connectors?
+
+3. To which views (1..*) does the model belong?
+	Motivate why, and identify corresponding stakeholders and their concerns.
+	
+4. Which of the following EFRs are addressed (Y + motivation | N)?
+	Performance/Scalability, availability/reliability, security, maintainability?
+Security: 
+Performance/Scalability: 
+Availability/Reliability: 
+Maintainability:
+Operability:
+
+5. Is there a concept of distribution (Y + motivation | N)?
+
+6.  Comment on the clarity/semantics of the diagram
+
+
+Vending Machine
+1. What building blocks do you see? What do they represent? 
+Are they conceptual or physical?
+
+2. Same questions as 1, but now for the connectors?
+
+3. To which views (1..*) does the model belong?
+	Motivate why, and identify corresponding stakeholders and their concerns.
+	
+4. Which of the following EFRs are addressed (Y + motivation | N)?
+	Performance/Scalability, availability/reliability, security, maintainability?
+Security: 
+Performance/Scalability: 
+Availability/Reliability: 
+Maintainability:
+Operability:
+
+5. Is there a concept of distribution (Y + motivation | N)?
+
+6.  Comment on the clarity/semantics of the diagram
