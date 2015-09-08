@@ -1,0 +1,39 @@
+\section{Model 3 - AUTOSAR}
+\begin{enumerate}
+	\item The building blocks we see in this model are all the components in the RTE system.
+	They are divided in several categories, namely pink blocks for drivers, green for abstractions, blue for services. 
+	We also see some grey blocks. 
+	These are external OS-applications or Micro-controllers.
+	At last we also have blue blocks.
+	These are "actors" in the error throw part.
+	So they are Receivers of the errors or Senders.
+	All these building blocks are conceptual.
+	
+	\item The connectors we see are the arrows from certain parts to other parts indicating the errors which are thrown by the hardware and/or software.
+	They are all conceptual.
+	
+	\item We see a bit of an implementation view. 
+	All the parts which have to be implemented in the RTE are shown, but how they are implemented and what they do however is left free to the developer.
+	We also see a bit of the Process view, mostly how the errors have to be handled and from which part they came.
+	
+	\item 
+	\begin{description}
+		\item[Performance/Scalability] Yes, they try to address the performance. 
+		Libraries are used and every part of the software, like communication, memory, I/O and on-board devices have their own abstraction, drivers and services.
+		I do not know however how well this model scales when you enlarge it.
+		\item[Availability/Reliability] Yes, a lot of errors are handled and pointed out.
+		\item[Security] No.
+		\item[Maintainability] No.
+	\end{description}
+	
+	\item A little bit. 
+	We know that parts of the software, like memory, I/O, communication, etc. have their own services, abstractions and drivers, but we do not really know how this is distributed in the RTE so we do not know a lot. 
+	
+	\item I think this is not a very clear diagram, because it looks kind of messy at the start.
+	This is because there are a lot of blocks and lines all over these blocks and on the right is some extra text.
+	But when you look a little longer at the diagram you see that actually it is not that bad at all. 
+	All the blocks which have something in common, like OS, drivers, services etc. are coloured in the same way. 
+	Errors are always shown as a red lightning flash and the text on the right is the legend for the errors.
+	Besides that I am missing the context of the model. 
+	I know that it has something to do with an automotive system from the URL and that a lot of errors are handled (or at least mentioned) but I do not really know what the system does.
+\end{enumerate}

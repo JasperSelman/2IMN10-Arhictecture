@@ -1,0 +1,56 @@
+\documentclass[a4paper,titlepage,11pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,amsmath,amssymb,color,hyperref}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage[english]{babel}
+
+%----------------------- Macros and Definitions --------------------------
+
+\setlength\headheight{20pt}
+\addtolength\topmargin{-10pt}
+\addtolength\footskip{20pt}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyfoot[RO,LE]{\sffamily\bfseries\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newcommand{\uni}{Eindhoven University of Technology}
+\newcommand{\fase}{Computer Science and Engineering}
+\newcommand{\vak}{Architecture of Distributed Systems}
+\newcommand{\vakcode}{2IMN10}
+\newcommand{\essaytitle}{Homework Assignment 1}
+\newcommand{\stad}{Eindhoven}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\vak}
+\fancyhead[L]{\uni}
+\fancyfoot[R]{\sffamily\bfseries\thepage}
+\fancyfoot[L]{\essaytitle}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+
+\graphicspath{{Images/}}
+
+
+\begin{document}
+	
+	\input{Sections/Titlepage.tex}
+	
+	\input{Sections/M1.tex}
+	\input{Sections/M2.tex}
+	\input{Sections/M3.tex}
+	\input{Sections/M4.tex}
+	\input{Sections/M5.tex}
+	\input{Sections/M6.tex}
+	\input{Sections/M7.tex}
+	\input{Sections/M8.tex}
+	
+\end{document}

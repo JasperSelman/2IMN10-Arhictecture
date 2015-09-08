@@ -1,0 +1,36 @@
+\section{Model 5 - LinkedIn}
+\begin{enumerate}
+	\item The blocks in this model are the applications, the services, the "cloud", and all the databases and servers.
+	The databases and servers are all physical and of course for storage of all the LinkedIn data.
+	The applications, services and cloud are all conceptual. The applications represent the profiles of different users.
+	The services represent what is used on LinkedIn, reading the news, communicate with other users, sharing something in a group, etc.
+	The cloud is where all these web apps are used.
+	
+	\item There is only one sort connector in this case, namely an arrow. 
+	Sometimes the arrow literally states what happens between the components (for example profile updates).
+	Other times it is less obvious and you only know to components are connected and communicate.
+	All the connectors are conceptual.
+	
+	\item We see a clear Design view with regards to the communication.
+	You can clearly see which components should interact with other components and if it should be a read/write action or something else.
+	You can also clearly see the Deployment view.
+	You can clearly see all the components in the view and it gives an overview of the services.
+	You can also see implementation things in the building blocks and connectors, so you also see the implementation view.
+	
+	\item 
+	\begin{description}
+		\item[Performance/Scalability] Yes, you see a stash of databases, and that every service has its own database. 
+		It is shown that this is extendible by the ... etc.
+		\item[Availability/Reliability] No.
+		\item[Security] No.
+		\item[Maintainability] Yes, since every component has its own database, you can easily change some of the services or add/remove one.
+	\end{description}
+	
+	\item Yes, you can clearly see the distribution between services and databases and which application uses which service.
+	
+	\item You can clearly see all the components in the sites and how they are connected.
+	Different components have there own colouring and smaller parts of the model.
+	Communication is clearly shown with arrows, sometimes the arrows also note what the communication is.
+	Not really clear where the architecture starts (I guess in the web apps).
+	But over all very structured and easy readable and understandable.
+\end{enumerate}
