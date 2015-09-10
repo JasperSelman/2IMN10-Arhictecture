@@ -1,1 +1,32 @@
 \section{Model 6 - NHIN}
+\begin{enumerate}
+	\item The model shows several actors, like the user, provider, consumer, which are conceptual. 
+	Then there are several records and systems, such as the gateway, the public health system, the warehouse, which are physical.
+	There is a distinction between a local organisation's existing system-collection, and the NHIN system-collection, which denotes that there is a data flow between an organisation and perhaps a larger (national?) database, to which more organisations can connect.
+	In the centre is a large node, saying ``connect'', the use of which is a little unclear. 
+	It seems to be a central interface through which all of the systems in order to pass requests to other systems, which I assume to be conceptual.
+	
+	\item The arrows represent the interactions between systems and other systems, and systems and users.
+	The arrow denotes the direction of data flow.
+	
+	\item
+	\begin{description}
+		\item[Logical view] The model denotes per user which actions/information are available to them.
+		\item[Process view] The model shows the different components of the system, and the information flow between them. This is useful to system integrators.
+	\end{description}
+	
+	\item
+	\begin{description}
+		\item[Performance/Scalability] No.
+		\item[Availability/Reliability] No.
+		\item[Security] Yes, the system makes notion of authorization and authentication.
+		\item[Maintainability] No.
+	\end{description}
+	
+	\item Yes, multiple systems are visible, a distinction is made between a local organisation and a public system. 
+	There are multiple machines all exchanging data with each other.
+	
+	\item The model is moderately clear. At first hand, it is hard to notice what is going on, because of the multitude of arrows, all in close proximity.
+	Additionally, where some of the components are very clearly labelled, it is unclear what the ``connect'' node in the centre entails.
+	However, the actions do seem to make sense, and there is a clear view on which actors are present and how they can interact with the system.
+\end{enumerate}

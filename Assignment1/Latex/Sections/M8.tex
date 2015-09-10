@@ -1,1 +1,31 @@
 \section{Model 8 - Consumer Website}
+\begin{enumerate}
+	\item The model is divided into 4 sections, each of which contains several nodes that seem to model access to and the contents of a certain website, including backend. There is a Java servlet, a database, etc.
+	All of these are conceptual.
+	
+	\item The connections show both the flow of the program as the protocol used. They are all conceptual.
+	
+	\item
+	\begin{description}
+		\item[Development view] Different subsystems are listed, along with access protocols. This is beneficial to programmers, to get an overview of the system to be implemented.
+		\item[Process view] There is a notion of information flow in the connectors, along with the execution environment, as it lists the protocols used.
+		This may come in handy for programmers, as they can look up how to program the protocols at hand.
+	\end{description}
+	
+	\item
+	\begin{description}
+		\item[Performance/Scalability] No.
+		\item[Availability/Reliability] No.
+		\item[Security] No.
+		\item[Maintainability] Yes, the main systems, subsystems, and interactions between these are all given.
+	\end{description}
+	
+	\item Yes, there is a notion of distribution, as there are multiple tiers in the system.
+	
+	\item The model is moderately clear. 
+	Instead of adhering to standard drawing conventions, the model defines its own shapes and lists them below.
+	It is divided into different tiers, which adds to the clarity, but both the irregular shapes as the sheer number of different type components make the system unnecessarily complex.
+	Additionally, there is a vast number of arrows, all differing in length, shape, and direction, which makes the model rather messy.
+	On top of that, the arrows cross a lot of times.
+	As such, it is difficult to understand the flow of the model.
+\end{enumerate}
