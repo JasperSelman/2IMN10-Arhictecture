@@ -1,0 +1,66 @@
+\documentclass[a4paper,titlepage,11pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,amsmath,amssymb,color,hyperref}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+%----------------------- Macros and Definitions --------------------------
+
+\setlength\headheight{20pt}
+\addtolength\topmargin{-10pt}
+\addtolength\footskip{20pt}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyfoot[RO,LE]{\sffamily\bfseries\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newcommand{\uni}{Eindhoven University of Technology}
+\newcommand{\fase}{Computer Science and Engineering}
+\newcommand{\vak}{Architecture of Distributed Systems}
+\newcommand{\vakcode}{2IMN10 }
+\newcommand{\essaytitle}{Architecture Comparison of Massive Multiplayer Online Games}
+\newcommand{\stad}{Eindhoven}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\vak}
+\fancyhead[L]{\uni}
+\fancyfoot[R]{\sffamily\bfseries\thepage}
+\fancyfoot[L]{\essaytitle}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+
+\graphicspath{{Images/}}
+
+\author{
+	Jasper Selman (0741516) - \texttt{j.w.m.selman@student.tue.nl}
+	\and
+	Ramon de Vaan (0758873) - \texttt{r.d.vaan@student.tue.nl}
+}
+\begin{document}
+
+	\input{Sections/Titlepage.tex}
+
+	\input{Sections/Abstract.tex}
+	\newpage
+	\input{Sections/Middleware.tex}
+	\newpage
+	\input{Sections/Peer.tex}
+	\newpage
+	\input{Sections/Service.tex}
+	\newpage
+	\input{Sections/Conclusion.tex}
+	\newpage
+	\input{Sections/References.tex}
+\end{document}
