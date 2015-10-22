@@ -11,7 +11,7 @@ Therefore the architecture is not complete yet, but we try to reason about all t
 \indent As mentioned before the traditional server-client architecture is very costly, that is why the authors chose for a peer-to-peer architecture. 
 The underlying structure for this peer-to-peer network is going to be a \emph{k-connected network graph}. 
 Such a graph seems very suitable for a peer-to-peer network. 
-When you establish a such a k-connected graph, the properties of it ensures that you are able to remove fewer than $k$ vertices (players) from this graph and the graph is still fully connected. 
+When you establish a k-connected graph, the properties of it ensure that you are able to remove fewer than $k$ vertices (players) from this graph and the graph is still fully connected. 
 This full connectivity is a must have, because if the graph is not fully connected, people in one part of the graph are not able to receive events which are caused by other players in the other part of the graph.
 This has the result that these players seem to "freeze" for players in the other part of the network. 
 A difficulty which is not solved by the properties of the k-connected graph is how to add new players to a graph or create a new graph. 
