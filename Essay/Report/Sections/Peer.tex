@@ -1,15 +1,86 @@
 \section*{Requirements of Peer-to-Peer based Massively Multiplayer Online Gaming}
-In the second paper the authors \cite{peer} provide a whole different kind of view on an architecture for MMOG. The peer-to-peer view. Such kind of architecture in its ideal form, reduces the costs made by the game vendor significantly. For example think of the amount of servers which become redundant. The problem with this kind of architecture however is to ensure the consistency and availability of the game. In the next part we will see how well the authors handled these problems. A, not unimportant, note is that the architecture proposed is not yet finished. The authors have ideas how to implement their architecture but this did not happen yet. Therefore the architecture is not complete yet, but we try to reason about all the parts of the architecture for which the ideas are already there.\\
-\indent As mentioned before the traditional server-client architecture is very costly, that is why the authors chose for a peer-to-peer architecture. The underlying structure for this peer-to-peer network is going to be a \emph{k-connected network graph}. Such a graph seems very suitable for a peer-to-peer network. When you establish a such a k-connected graph, the properties of it ensures that you are able to remove fewer than $k$ vertices (players) from this graph and the graph is still fully connected. This full connectivity is a must have, because if the graph is not fully connected, people in one part of the graph are not able to receive events which are caused by other players in the other part of the graph. This has the result that these players seem to "freeze" for players in the other part of the network. A difficulty which is not solved by the properties of the k-connected graph is how to add new players to a graph or create a new graph. The authors themselves acknowledge that it is a problem when it is not guaranteed that players are added to an existing graph. Right now the authors are investigating how they can solve this problem. An already proposed solution is the IRC protocol, but we do not really see how this protocol should solve this problem.\\
-\indent In contrast to the number of architectural styles there are several interaction styles. The communication middleware used provides two kind of API's. The first supports a reactive world state propagation and the other a proactive world state propagation. The first API is used for activities like virtual crime investigation. The interaction style behind this API is a Request - Reply, or Remote Invocation, style. This style is well suited for this type of activities. The authors themselves give a good example for this: "\emph{if a player is suspected of having acted inappropriately, a game master may actively query the network for all state information about the player's actions in a given time period.}". This also shows us why this interaction style is a terrible choice for the real game play. If the second, proactive, API was also based on this style then all the peers would have to make a request for every action that occurs, this would cause huge delays for the players and as we all know, in MMOG delays are one of the most irritating things that can happen.\\
-\indent Luckily the authors had realized that themselves and use a different style for the proactive API. The style behind this API fits best to the event based interaction style, or Indirect Communication style. This seems to be a good choice because the greater part of the communication between peers is based on events in the game caused by other players. A clear problem now was how to distribute all the changes over all the peers. Simply notifying all the peers about every event that happened, even when the event happened miles away, is not a suitable option. So the authors came up with the following solution. The game is partitioned in to a number of sub-areas, called \emph{zones}. In every zone there is one coordinator, which is just a normal peer. Now there are two scenario's. In the first scenario a zone population is sparse. In that case the coordinator observes the peers and determines which peers should exchange events. In the second scenario the zone is densely populated. In that case the coordinator instructs all the peers to stop sending direct messages but instead send everything to the coordinator. The coordinator on its turn sends a message to every other peer in the zone, consisting of a summary of these messages. The authors admit that this is not an ideal solution due to the delay for the update messages but it is an efficient one.\\ 
-\indent This style pops some question marks. For example what happens to the game state of a user who is elected as coordinator. The coordinator has substantially more work to do than other peers, does this mean the coordinator has a bigger delay? Also what happens when the coordinator leaves the zone, but it was densely populated and it has not yet send an update message? What happens when a peer is on the edge of a zone and can already see the other zone, does he still only get updates from the zone he is in or also already from the other zone? What happens when a lot of elections of coordinators have to take place due to the unfortunate fact that the newly elected coordinator leaves the game at that time? Does this cause a lot of delay? These are all questions that are very important and unfortunately these cannot be answered yet since the architecture is not yet finished. \\
-\indent A whole different problem in this peer-to-peer style, which did not occur in a simple client-server architecture, is the consistency of a game. This is one of the hardest issues in a peer-to-peer network. How do you ensure that the action you just performed is consistent with all the other events in the game? Also another problem is how (and where) do you store all the data when a player logs off? In a client - server you can just store it at a database server, but how do you do this now? The authors acknowledge this problem and think that they can overcome this by interpreting the changes in a game as a series of events. The problem is however how to determine the ordering of these events? A definition of a consistency model has been made, linearizability \cite{linear}. This should help the authors to achieve this ordering. Currently they are investigating how to use this in algorithms to achieve the game consistency.\\
+In the second paper the authors \cite{peer} provide a whole different kind of view on an architecture for MMOG. 
+The peer-to-peer view. 
+Such kind of architecture in its ideal form, reduces the costs made by the game vendor significantly. 
+For example think of the amount of servers which become redundant. 
+The problem with this kind of architecture however is to ensure the consistency and availability of the game. 
+In the next part we will see how well the authors handled these problems. 
+A, not unimportant, note is that the architecture proposed is not yet finished. 
+The authors have ideas how to implement their architecture but this did not happen yet. 
+Therefore the architecture is not complete yet, but we try to reason about all the parts of the architecture for which the ideas are already there.\\
+\indent As mentioned before the traditional server-client architecture is very costly, that is why the authors chose for a peer-to-peer architecture. 
+The underlying structure for this peer-to-peer network is going to be a \emph{k-connected network graph}. 
+Such a graph seems very suitable for a peer-to-peer network. 
+When you establish a such a k-connected graph, the properties of it ensures that you are able to remove fewer than $k$ vertices (players) from this graph and the graph is still fully connected. 
+This full connectivity is a must have, because if the graph is not fully connected, people in one part of the graph are not able to receive events which are caused by other players in the other part of the graph.
+This has the result that these players seem to "freeze" for players in the other part of the network. 
+A difficulty which is not solved by the properties of the k-connected graph is how to add new players to a graph or create a new graph. 
+The authors themselves acknowledge that it is a problem when it is not guaranteed that players are added to an existing graph. 
+Right now the authors are investigating how they can solve this problem. 
+An already proposed solution is the IRC protocol, but we do not really see how this protocol should solve this problem.\\
+\indent In contrast to the number of architectural styles there are several interaction styles. 
+The communication middleware used provides two kind of API's. 
+The first supports a reactive world state propagation and the other a proactive world state propagation. 
+The first API is used for activities like virtual crime investigation. 
+The interaction style behind this API is a Request - Reply, or Remote Invocation, style. 
+This style is well suited for this type of activities. 
+The authors themselves give a good example for this: "\emph{if a player is suspected of having acted inappropriately, a game master may actively query the network for all state information about the player's actions in a given time period.}". 
+This also shows us why this interaction style is a terrible choice for the real game play. 
+If the second, proactive, API was also based on this style then all the peers would have to make a request for every action that occurs, this would cause huge delays for the players and as we all know, in MMOG delays are one of the most irritating things that can happen.\\
+\indent Luckily the authors had realized that themselves and use a different style for the proactive API.
+The style behind this API fits best to the event based interaction style, or Indirect Communication style. 
+This seems to be a good choice because the greater part of the communication between peers is based on events in the game caused by other players. 
+A clear problem now was how to distribute all the changes over all the peers. 
+Simply notifying all the peers about every event that happened, even when the event happened miles away, is not a suitable option. 
+So the authors came up with the following solution. 
+The game is partitioned in to a number of sub-areas, called \emph{zones}. 
+In every zone there is one coordinator, which is just a normal peer. 
+Now there are two scenario's. In the first scenario a zone population is sparse. 
+In that case the coordinator observes the peers and determines which peers should exchange events. 
+In the second scenario the zone is densely populated. 
+In that case the coordinator instructs all the peers to stop sending direct messages but instead send everything to the coordinator. 
+The coordinator on its turn sends a message to every other peer in the zone, consisting of a summary of these messages. 
+The authors admit that this is not an ideal solution due to the delay for the update messages but it is an efficient one.\\ 
+\indent This style pops some question marks. 
+For example what happens to the game state of a user who is elected as coordinator. 
+The coordinator has substantially more work to do than other peers, does this mean the coordinator has a bigger delay? 
+Also what happens when the coordinator leaves the zone, but it was densely populated and it has not yet send an update message? 
+What happens when a peer is on the edge of a zone and can already see the other zone, does he still only get updates from the zone he is in or also already from the other zone? 
+What happens when a lot of elections of coordinators have to take place due to the unfortunate fact that the newly elected coordinator leaves the game at that time? 
+Does this cause a lot of delay? 
+These are all questions that are very important and unfortunately these cannot be answered yet since the architecture is not yet finished. \\
+\indent A whole different problem in this peer-to-peer style, which did not occur in a simple client-server architecture, is the consistency of a game. 
+This is one of the hardest issues in a peer-to-peer network. 
+How do you ensure that the action you just performed is consistent with all the other events in the game? 
+Also another problem is how (and where) do you store all the data when a player logs off? 
+In a client - server you can just store it at a database server, but how do you do this now? 
+The authors acknowledge this problem and think that they can overcome this by interpreting the changes in a game as a series of events. 
+The problem is however how to determine the ordering of these events? 
+A definition of a consistency model has been made, linearizability \cite{linear}. 
+This should help the authors to achieve this ordering. 
+Currently they are investigating how to use this in algorithms to achieve the game consistency.\\
 \\
-The last part we were going to discuss about the architecture presented in this paper is the performance of it. Think of properties like , maintenance, load distribution, security, availability, usability and scalability. \\
-\indent First we take a look at the API's in the communication engine and to which properties these contribute. Likely is that they increase the usability of the engine, since multiple types of games fit in this middleware. The distribution framework gives support for distributed game management and computation, the usability also benefits from this.\\
-\indent Next we take a look at the k-connected network. If the authors succeed in implementing this, the availability, reliability and scalability would benefit greatly from it. With such a network the system is able to add people to a network or remove people from it. This represents people logging in and off. If this is possible the system is also able to ensure that the game state of players does not depend on how many other players are online and who goes offline while you are playing. For adding a person to a graph, the authors are currently busy how to add new people to a graph instead of creating a new graph. If and when this works the system is also very well scalable. People could just log in and they are connected to an existing graph.\\
-\indent At the moment the authors are also busy investigating how the game world changes have to be distributed over all the peers. If they do this well enough than the load distribution of the game is quite well, but they have to be careful. If the load per peer gets to high, the performance for that single peer might go down a lot. They have also a reactive world state propagation, this propagation is used to do research in virtual crime investigation in the game (which shows us they are thinking about the security of their architecture). Unfortunately we cannot say more about this part since there are no real decisions made yet how to handle this game state changes.\\
-\indent The last part the authors are currently busy with tis the consistency of the game. For the game view of the user it is important the game is consistent in such a way that is player A picks up an item, player B cannot pick up this item anymore. At the moment the authors developed a model for ordering of events in a system to be correct, but nothing of this is yet implemented. \\
-\indent Overall the system has great potential regarding these performance properties, but it was still in progress so we had to wait for the result how well it is implemented in practice. Since the paper was quite old we tried to find how this peer@play project ended and if it was a success or not, but unfortunately we were not able to find any information on this. So this might insinuate that the architecture in practice was not so good.
-
+The last part we were going to discuss about the architecture presented in this paper is the performance of it. 
+Think of properties like , maintenance, load distribution, security, availability, usability and scalability. \\
+\indent First we take a look at the API's in the communication engine and to which properties these contribute. 
+Likely is that they increase the usability of the engine, since multiple types of games fit in this middleware. 
+The distribution framework gives support for distributed game management and computation, the usability also benefits from this.\\
+\indent Next we take a look at the k-connected network. 
+If the authors succeed in implementing this, the availability, reliability and scalability would benefit greatly from it. 
+With such a network the system is able to add people to a network or remove people from it. 
+This represents people logging in and off. 
+If this is possible the system is also able to ensure that the game state of players does not depend on how many other players are online and who goes offline while you are playing. 
+For adding a person to a graph, the authors are currently busy how to add new people to a graph instead of creating a new graph. 
+If and when this works the system is also very well scalable. 
+People could just log in and they are connected to an existing graph.\\
+\indent At the moment the authors are also busy investigating how the game world changes have to be distributed over all the peers. 
+If they do this well enough than the load distribution of the game is quite well, but they have to be careful. 
+If the load per peer gets to high, the performance for that single peer might go down a lot. 
+They have also a reactive world state propagation, this propagation is used to do research in virtual crime investigation in the game (which shows us they are thinking about the security of their architecture).
+Unfortunately we cannot say more about this part since there are no real decisions made yet how to handle this game state changes.\\
+\indent The last part the authors are currently busy with is the consistency of the game. 
+For the game view of the user it is important the game is consistent in such a way that is player A picks up an item, player B cannot pick up this item any more. 
+At the moment the authors developed a model for ordering of events in a system to be correct, but nothing of this is yet implemented. \\
+\indent Overall the system has great potential regarding these performance properties, but it was still in progress so we had to wait for the result how well it is implemented in practice. 
+Since the paper was quite old we tried to find how this peer@play project ended and if it was a success or not, but unfortunately we were not able to find any information on this. 
+So this might insinuate that the architecture in practice was not so good.
