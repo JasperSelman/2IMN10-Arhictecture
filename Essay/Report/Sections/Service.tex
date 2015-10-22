@@ -44,7 +44,7 @@ Users with a bad internet connection may also affect the game state of other use
 As per the example given in the article, in a race game, multiple users may think they're at the number one position, due to delayed messages from other players regarding their position on the track.
 This may be addressed by game developers, but it does seem like placing a burden upon them, which should actually have been solved in the architecture itself. \\
 
-Now we are going to analyze the architecture proposed in \cite{service} with to performance properties like maintenance, load distribution, security, availability, usability and scalability. 
+Now we are going to analyze the architecture proposed in \cite{service} regarding to performance properties like maintenance, load distribution, security, availability, usability and scalability. 
 First we would like to discuss the load distribution.
 The proposed architecture is split into two parts, where one part is responsible for less network intensive processes, such as user authentication and credit card checks. 
 The other part is where the brunt of the communication is done.
@@ -56,7 +56,7 @@ The SOA concept calls for loosely coupled entities that are independant.
 As such, the system can easily be extended with other services as a chat service.
 Thus, even as needs may change in the future, load balancing can still be guaranteed. \\
 Now let’s take a closer look at the usability. 
-The decoupling discussed above together with the BPEL language proposed in section \emph{Simulation flow in BPEL} of \cite{service} seem to give a great boost for usability. 
+The decoupling discussed above together with the BPEL language proposed in section \emph{Simulation flow in BPEL} of \cite{service} seems to give a great boost for usability. 
 The BPEL has great functionality when the processes involved do not have a hard real time constraint. 
 It is also stated that this language is a standard for defining processes. 
 So this insinuates that there the tool is very usable (usable in the fact that it is easy to use and can model a lot of different processes). 
