@@ -1,7 +1,7 @@
 \section*{Towards Service Oriented Architecture for MMOG}
 The final architecture we will discuss is the one described in the paper \emph{Towards Service Oriented Architecture for MMOG} \cite{service}.
-The main focus of the paper is to propose a service oriented architecture for massive multiplayer online games, that ensure a certain quality of service and provide scalability.
-Quality of service seems mostly seems to be expressed in terms of real-time interaction.
+The main focus of the paper is to propose a service oriented architecture for massive multiplayer online games, that ensures a certain quality of service and provides scalability.
+Quality of service mostly seems to be expressed in terms of real-time interaction.
 The authors have different measures for real-time interaction, ranging from `non real-time' to `extreme real-time'.
 In user communication, the writes attempt to achieve `hard real-time' interaction.
 However, some of the other requirements of the system seem to collide with the quality of service requirements. \\
@@ -44,7 +44,7 @@ Users with a bad internet connection may also affect the game state of other use
 As per the example given in the article, in a race game, multiple users may think they're at the number one position, due to delayed messages from other players regarding their position on the track.
 This may be addressed by game developers, but it does seem like placing a burden upon them, which should actually have been solved in the architecture itself. \\
 
-\noindent Now we are going to analyze the architecture proposed in \cite{service} with regarding to performance properties like maintenance, load distribution, security, availability, usability and scalability. 
+\noindent Now we are going to analyze the architecture proposed in \cite{service} with to performance properties like maintenance, load distribution, security, availability, usability and scalability. 
 First we would like to discuss the load distribution. 
 The architecture proposed in the paper showed us a that the overall system consists of many different decoupled modules. 
 There are servers for accounts to login, to handle the billing process (which is of course to great importance for the vendor), auxiliary servers for services like chatting and of course the game servers which run the real game. 
@@ -53,7 +53,7 @@ In the previously discussed paper the game was split into client services like t
 This is now done all on this single server. 
 So this load is not well distributed. 
 It is also questionable how well this works when there are multiple game servers since the authors state in the section \emph{simulation of SOA Concept for Servers} that all servers are implemented as standalone servers. 
-This implies there is on real communication between servers. \\
+This implies there is no real communication between servers. \\
 \indent Now let’s take a closer look at the usability. 
 The decoupling discussed above together with the BPEL language proposed in section \emph{Simulation flow in BPEL} of \cite{service} seem to give a great boost for usability. 
 The BPEL has great functionality when the processes involved do not have a hard real time constraint. 
