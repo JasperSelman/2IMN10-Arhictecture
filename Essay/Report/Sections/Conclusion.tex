@@ -1,2 +1,16 @@
 \section*{Conclusion}
-gerghr
+We have discussed different kinds of architectural styles to build a framework for Massive Multiplayer Online Games. 
+Popular styles to do this are the classic client-server style and the peer-to-peer style. 
+Both these styles have their own advantages and disadvantages. 
+For the client-server it is fairly straightforward how you can distribute data between clients and servers, consistency of the game is ensured by storing players data on database servers and maintaining a stable game state of a client is also relatively easy because all the request are handled by a single server (or cluster of servers). 
+This is all non trivial to do in a peer-to-peer network, but a peer-to-peer network is much cheaper to maintain than the very costly client-server architecture. 
+That is the main reason why people try to develop peer-to-peer based frameworks.\\
+This is problem is shown by the authors of \cite{middleware} and \cite{peer}.
+In the first paper they have succeeded in creating a client-server framework, but this needed a lot of (expensive) servers. 
+In the second paper the authors had good ideas for a peer-to-peer network, but did not quite succeed (yet) in implementing it and overcome these difficulties.
+In \cite{service} the authors did succeed in implementing a peer-to-peer network and we think that this framework is the most promising.\\
+While you can argue which architectural style is the best for Massive Multiplayer Online Games, all the papers coincide on the interaction style most suited for such games.
+This is the event based interaction style. 
+This is due to the fact that almost all interaction in these games consists of keeping track of events caused by other players which might be of influence for the player them self.
+The more conventional RCP style is not suited for this, since it would cause high delays. 
+The event based style does not have this problem and that is the main reason why this style is preferable over the RCP style.
