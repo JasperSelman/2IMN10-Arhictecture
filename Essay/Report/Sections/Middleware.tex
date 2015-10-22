@@ -2,19 +2,19 @@
 The first architecture and it's design choices we are going to review, is the architecture described in \emph{Practical Middleware for Massively Multiplayer Online Games} \cite{middleware}.
 In this paper the authors elaborated on the middleware platform. 
 The purpose of such a platform is, how the authors stated it, "Middleware helps programmers manage the complexity and heterogeneity of distributed computing environments". 
-So for short it is a platform which makes it easier to develop and maintain distributed games. The authors have also developed their own platform and have made several architectural design decisions for that. 
+So for short, it is a platform which makes it easier to develop and maintain distributed games. The authors have also developed their own platform and have made several architectural design decisions for that. 
 The platform is called Distributed organized Information Terra (DoIT) middleware platform. \\
 
 \begin{wrapfigure}{r}{0.5\textwidth}
 \begin{center}
 \includegraphics[width=0.35\textwidth]{4tier}
 \caption{General framework for middleware platforms for MMOG}
-\end{center}
 \label{fig:4tier}
+\end{center}
 \end{wrapfigure}
 
 \noindent A lot of research has been done by researchers to define a framework for middleware platforms. 
-The framework is a 4-tier architecture consisting of a client, a proxy/gateway, a cell server and a database tier. 
+The eventual framework is a 4-tier architecture consisting of a client, a proxy/gateway, a cell server and a database tier. 
 The gamers have control over the client applications. 
 The proxy is in charge of distribution of messages and security aspects. 
 The cell servers maintain the virtual world, it also makes sure that no collisions appear between multiple game clients. 
@@ -28,7 +28,8 @@ For an elaborated description of these properties, we refer to section "Practica
 This platform uses a message-oriented middleware instead of a RPC-based technology. 
 The authors claim that this of great benefit due to the event-driven behavior of MMOG's. 
 This seems logical. A lot of the game play of MMOG is indeed based on events made by other players. 
-RCP does not really benefit from this, it would be better suited for single player games, because in that case all the procedure calls are done by the one client. \\
+RCP does not really benefit from this, it would be better suited for single player games, because in that case all the procedure calls are done by the one client. 
+If it were used for a MMOG then it would casuse severe delays because of the significant amount of events.\\
 \indent Another great advantage of MOM over RCP is that MOM allows decoupling while RCP does not. 
 This is also mentioned by the authors. 
 Next to this difference the DoIT platform differs on two points from the framework mentioned before. 
@@ -58,16 +59,16 @@ This can all be derived from the general framework for middleware which DoIT fol
 The MMOG has a central (or multiple, you can play with that a bit) database servers. 
 In these servers the game state of a client is saved. 
 This has as a great advantage that a client user does not depend on the availability of other users (like in a P2P network). 
-The downside of this is that a lot of traffic has to go from/to that database server. \\
+The downside of this is that a lot of traffic has to go from/to that database server.
 The framework tries to minimize this by letting several cell servers interact with this database server.
-Fortunately this database server does not have to be interacted very often, I assume once to load the clients game state when he logs on and once to store it when he logs of. 
-The massive interaction happens between clients and cell servers. 
-Now I assume that all one cell server handles the game server in which clients are playing or that when several cell servers handle such a game server that they communicate with each other. 
+Fortunately this database server does not have to be interacted very often, we assume once to load the clients game state when he logs on and once to store it when he logs of. \\
+\indent The massive interaction happens between clients and cell servers. 
+Now we assume that one cell server handles the game server in which clients are playing or that when several cell servers handle such a game server, that they communicate with each other. 
 Otherwise it would not be possible to resolve conflicts between clients, like for instance user A picks up an item and user B picks up the same item at about the same time. 
 This conflict has to be resolved by the client servers. 
 Luckily this can be easily done by doing a request to the server whether this item can be picked up or not. 
-The cell server(s) only allow one of those request. So this client server architecture in the 4-tiered framework ensures that client games are in a steady state.\\
-There is now one problem that have to be addressed, that is what happens when one of the cell servers or database servers goes down?
+The cell server(s) only allow one of those request. So this client server architecture in the 4-tiered framework ensures that client game states are in a steady state.\\
+\indent There is now one problem that have to be addressed, that is what happens when one of the cell servers or database servers goes down?
 When one of the cell servers goes down, than it is possible to distribute the clients over other cell servers. 
 This might affect the performance a bit, due to bigger loads on the other cell servers but it is still better than just dump the connections with the clients that were connected to the failed cell server. 
 A bigger issue is what happens when the database server goes down? 
@@ -103,8 +104,8 @@ So there is definitely room for improvement in this tool for this, but this can 
 This was also briefly discusses before. 
 As long as there are enough (clusters of) servers available for the cell servers, then people can play the game. 
 When one of the servers goes down the load of that server can be redistributed over the other servers. 
-The problem might be in the database server. When that serer is down, the availability of the architecture depends on whether or not (and how many) backup servers are available.\\
-The last property we take a look at is the usability.
+The problem might be in the database server. When that server is down, the availability of the architecture depends on whether or not (and how many) backup servers are available.\\
+\indent The last property we take a look at is the usability.
 We think that due to the customization of DoIT, vendors can establish the platform in such a way that they think is best for their game. 
 It is however difficult to say something about the usability of the system. 
 The DoIT system provides a framework, but not how people have to work within this framework. 
